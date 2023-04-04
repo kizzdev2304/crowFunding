@@ -40,7 +40,7 @@ const authControllers = {
           },
 
           process.env.ACCESS_TOKEN_SECRET,
-          { expiresIn: "30s" }
+          { expiresIn: "1h" }
         );
         const { password, ...others } = user._doc;
         res.status(200).json({ ...others, token });
