@@ -30,4 +30,4 @@ app.listen(PORT, () => {
 //Router
 app.use("/login", authRouter);
 app.use("/register", registerRouter);
-app.use("/user", userRouter);
+app.use("/", userRouter);

@@ -10,7 +10,7 @@ const registerController = async (req, res) => {
   if (user || email)
     return res
       .status(400)
-      .json({ message: "Username or email already existsl" });
+      .json({ message: "Username or email already existsl." });
   const newUser = await new db({
     username: req.body.username,
     password: hashed,

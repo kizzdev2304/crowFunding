@@ -13,7 +13,7 @@ const generateToken = (user, secretKey, secretTime) => {
 };
 const verifyToken = (secretKey) => {
   return jwt.verify(secretKey, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    if (err) return err;
+    if (err) return false;
     return user;
   });
 };
