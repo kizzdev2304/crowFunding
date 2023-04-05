@@ -1,9 +1,7 @@
-const middlewareControllers = require("../controllers/middlewareControllers");
 const userControllers = require("../controllers/userControllers");
+const verifyTokenController = require("../controllers/verifyTokenController");
 const router = require("express").Router();
 //getAlluser
-// router.get("/", middlewareControllers.verifyToken, userControllers.getAllUsers);
-//deleteUser
-// router.delete("/:id", userControllers.deleteUsers);
+router.get("/", verifyTokenController, userControllers.getAllUsers);
 
 module.exports = router;

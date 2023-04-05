@@ -11,16 +11,10 @@ const generateToken = (user, secretKey, secretTime) => {
     { expiresIn: secretTime }
   );
 };
-const verifyToken = (user) => {
-  return jwt.sign(
-    {
-      id: user.id,
-      user: user.username,
-      email: user.email,
-      admin: user.admin,
-    },
-    process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "1h" }
-  );
+const verifyToken = (secretKey) => {
+  return jwt.verify(secretKey, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) return err;
+    return user;
+  });
 };
-module.exports = { generateToken };
+module.exports = { generateToken, verifyToken };
