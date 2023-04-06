@@ -11,8 +11,8 @@ const generateToken = (user, secretKey, secretTime) => {
     { expiresIn: secretTime }
   );
 };
-const verifyToken = (secretKey) => {
-  return jwt.verify(secretKey, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+const verifyToken = (secretKey, refreshTokenSecret) => {
+  return jwt.verify(secretKey, refreshTokenSecret, (err, user) => {
     if (err) return false;
     return user;
   });

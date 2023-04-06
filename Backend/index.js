@@ -4,9 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
-const authRouter = require("./routes/auth");
-const registerRouter = require("./routes/register");
-const userRouter = require("./routes/user");
+const Apis = require("./routes/api");
 const app = express();
 app.use(morgan("common"));
 app.use(cookieParser());
@@ -28,6 +26,4 @@ app.listen(PORT, () => {
   }
 })();
 //Router
-app.use("/login", authRouter);
-app.use("/register", registerRouter);
-app.use("/", userRouter);
+Apis(app);
