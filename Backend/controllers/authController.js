@@ -60,18 +60,23 @@ const authController = {
         return res
           .status(400)
           .json({ message: "Username or email already existsl." });
+      if (req.body.username.length <= 6)
+        return res
+          .status(400)
+          .json({ message: "Username at least 6 characters" });
       const newUser = await new db({
         username: req.body.username,
         password: hashed,
         email: req.body.email,
       });
       const userSave = await newUser.save();
-      const accessToken = authController.getToken(user);
-      const refreshToken = authController.getRefreshToken(user);
+      const accessToken = authController.getToken(userSave);
+      const refreshToken = authController.getRefreshToken(userSave);
       const { password, ...others } = userSave._doc;
       res.cookie("jwt", refreshToken, cookieRes);
       return res.status(200).json({ ...others, accessToken });
     } catch (error) {
+      console.log(error);
       return res.sendStatus(500);
     }
   },
