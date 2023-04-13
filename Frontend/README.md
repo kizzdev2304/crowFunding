@@ -1,6 +1,6 @@
 # Vite Boilerplate
 
-> A React boilerplate with Typescript using Vite. Includes Redux + Saga, Tailwindcss, EsLint + Prettier, Husky Commit Lint
+> A React boilerplate with Typescript using Vite. Includes Redux + Saga logger, Tailwindcss, EsLint + Prettier
 
 ## Installing / Developing
 
@@ -19,13 +19,6 @@ npm start
 ```
 
 This runs the app on a port(default 3000)
-
-
-```shell
-npm run format
-```
-
-This will format the files with prettier.
 
 ```shell
 npm run lint
